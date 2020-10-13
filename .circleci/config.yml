@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/var/www/hellol
+    steps:
+      - checkout
+      - run:
+          name: GCP - Push changes
+          command: |
+            ssh root@127.0.0.1 'cd /var/www/hellol && git pull'
+      - run:
+          name: GCP - Install Dependencies
+          command: |
+            ssh root@127.0.0.1 'cd /var/www/hellol && yarn'
+      - run:
+          name: GCP - Run migrations
+          command: |
+            ssh root@127.0.0.1 'cd /var/www/hellol && adonis migration:run --force'
+      - run:
+          name: GCP - Restarting Service
+          command: |
+            ssh root@127.0.0.1 'pm2 restart hellol'    
+
+workflows:
+  version: 2
+  deploy-and-build:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master

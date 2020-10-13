@@ -1,0 +1,13 @@
+{
+  "name": "footer",
+  "main": "Footer",
+  "version": "0.0.0",
+  "private": true,
+  "maintainers": [
+    {
+      "email": "sousa.programador@gmail.com",
+      "name": "Mateus Sousa",
+      "url": "github.com/sousaprogramador"
+    }
+  ]
+}

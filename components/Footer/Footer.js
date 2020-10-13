@@ -1,9 +1,10 @@
 import { Fragment } from "react";
-import { Coders } from "./styles";
+import { Container,Coders } from "./styles";
 import Link from "next/link";
 
 const Footer = () => (
   <Fragment>
+     <Container>
       <div className="container">
         <div className="row">
           <div className="col-md-4">
@@ -62,6 +63,7 @@ const Footer = () => (
         <span>Desenvolvido por sousaprogramador</span>
       </div>
     </Coders>
+    </Container>
   </Fragment>
 );
 
